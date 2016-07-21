@@ -50,7 +50,7 @@ final class QrReader
 {
     public $result;
 
-    function __construct($filename)
+    function __construct($filename, $hints=null)
     {
 
         try {
@@ -74,7 +74,7 @@ final class QrReader
             $bitmap = new \Zxing\BinaryBitmap($histo);
             $reader = new \Zxing\Qrcode\QRCodeReader();
 
-            $this->result = $reader->decode($bitmap);
+            $this->result = $reader->decode($bitmap, $hints);
         }catch (\Zxing\NotFoundException $er){
             $this->result = false;
         }catch( \Zxing\FormatException $er){

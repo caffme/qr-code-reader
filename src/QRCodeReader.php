@@ -15,9 +15,9 @@ class QRCodeReader
      * @param $path_to_image
      * @return bool|string decoded text from QR Code
      */
-    public function decode($path_to_image)
+    public function decode($path_to_image, $hints=null)
     {
-        $qrcode = new QrReader($path_to_image);
+        $qrcode = new QrReader($path_to_image, $hints);
         $text = $qrcode->text();
         return $text;
     }

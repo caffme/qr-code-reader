@@ -74,8 +74,7 @@ class Detector {
      */
     public final function detect($hints=null){/*Map<DecodeHintType,?>*/
 
-        $resultPointCallback = $hints == null ? null :
-            $hints->get('NEED_RESULT_POINT_CALLBACK');
+        $resultPointCallback = is_array($hints) && isset($hints['NEED_RESULT_POINT_CALLBACK']) ? $hints['NEED_RESULT_POINT_CALLBACK'] : null ;
         /* resultPointCallback = hints == null ? null :
                 (ResultPointCallback) hints.get(DecodeHintType.NEED_RESULT_POINT_CALLBACK);*/
         $finder = new FinderPatternFinder($this->image, $resultPointCallback);
